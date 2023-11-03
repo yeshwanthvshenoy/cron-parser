@@ -1,0 +1,51 @@
+// Plugins Configuration
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+// Package settings
+group = 'com.cron.parser'
+version = '1.0-SNAPSHOT'
+
+// Repositories Configuration
+repositories {
+    mavenCentral()
+}
+
+// Java version
+sourceCompatibility = 17
+targetCompatibility = 17
+
+// File encoding
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// Project Dependencies
+dependencies {
+    // Testing Dependencies
+    testImplementation("junit:junit:${rootProject.junitVersion}")
+}
+
+// Source Configuration
+sourceSets {
+    main {
+        java {
+            srcDir 'main'
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+    }
+}
+
+// Test Configuration
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed"
+    }
+}
