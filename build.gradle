@@ -2,6 +2,7 @@
 plugins {
     id 'java'
     id 'idea'
+    id 'jacoco'
 }
 
 // Package settings
@@ -26,6 +27,7 @@ tasks.withType(JavaCompile) {
 dependencies {
     // Testing Dependencies
     testImplementation("junit:junit:${rootProject.junitVersion}")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:${rootProject.vintageEngineVersion}")
 }
 
 // Source Configuration
@@ -48,4 +50,22 @@ test {
     testLogging {
         events "passed"
     }
+}
+
+// Jacoco Report Configuration
+jacocoTestReport {
+    reports {
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+// Report needs to be generated after tests run
+test {
+    finalizedBy jacocoTestReport
+}
+
+// Tests are required to run before generating the report
+jacocoTestReport {
+    dependsOn test
 }

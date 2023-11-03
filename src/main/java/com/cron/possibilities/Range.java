@@ -16,10 +16,6 @@ public class Range extends Base {
         List<Integer> rangeLimits = List.of(this.segment.getExpression().split("-")).stream()
                 .map(Integer::valueOf).collect(Collectors.toList());
 
-        if (rangeLimits.size() != 2) {
-            throw new RuntimeException("Range does not have valid expression : " + this.segment.getExpression());
-        }
-
         if (rangeLimits.get(1) < rangeLimits.get(0)) {
             throw new RuntimeException("Range minimum/maximum are in wrong order. maximum should be : " +
                     rangeLimits.get(0) + " and minimum should be : " + rangeLimits.get(1));
