@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Parser" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.cron.Parser" />
-    <module name="CRON-Parser.main" />
+    <module name="cron-parser.main" />
     <option name="PROGRAM_PARAMETERS" value="&quot;*/15 0 1,15 * 1-5 /usr/bin/find&quot;" />
     <extension name="coverage">
       <pattern>
